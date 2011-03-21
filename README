@@ -1,0 +1,8 @@
+Base Drush Make files to use for build a Drupal distribution or a development sandbox.
+Contains a selection of commonly used modules, selected by my interests on site building.
+
+Contains:
+- drupal-install-6.x.make
+
+TODO:
+drupal 7 version of selected modules.
