@@ -179,6 +179,9 @@ projects[] = styleguide
 ;projects[] = l10n_client
 ;projects[] = translation_helpers
 
+; localization
+projects[] = l10n_update
+
 ;anti spam
 ;projects[] = mollom
 

@@ -1,8 +1,12 @@
 Base Drush Make files to use for build a Drupal distribution or a development sandbox.
 Contains a selection of commonly used modules, selected by my interests on site building.
+For use just type:
+$drush make file.make [install_directory]
+
+Some modules/themes/libraries have a fixed version defined for make sure of compatibility,
+Always check the files to see if the specified versions suit to your case.
 
 Contains:
 - drupal-install-6.x.make
+- drupal-baseinstall-7.x.make
 
-TODO:
-drupal 7 version of selected modules.
