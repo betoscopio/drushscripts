@@ -20,6 +20,8 @@ api = 2
 
 ; Core project
 ; ------------
+
+projects[drupal][type] = core
 projects[drupal][version] = 7.0
 
 ; Projects
