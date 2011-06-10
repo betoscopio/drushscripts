@@ -20,15 +20,15 @@ api = 2
 
 ; Core project
 ; ------------
-
-projects[drupal][type] = core
 projects[drupal][version] = 7.0
 
 ; Projects
 ; --------
 projects[ctools] = 1.0-alpha4
 projects[views] = 3.0-beta3
-projects[features] = 1.x-dev
+projects[features] = 1.0-beta2
+;projects[features_plumber] = 1.0-alpha3
+;projects[features_override] = 1.0-beta1
 ; To see the difference in overriden features
 projects[diff] = 1.x-dev
 ;use git clone --branch 7.views-post-alpha1-exportable-fix http://git.drupal.org/project/features.git
@@ -39,7 +39,11 @@ projects[] = pathauto
 ; Admin
 projects[] = advanced_help
 projects[] = site_map
+;projects[] = admin_menu
 ;projects[] = context
+;projects[boxes] = 1.0-beta3
+; Improves administration page of modules
+;projects[] = module_filter
 ; Create node based on other, base for node templating
 ;projects[] = node_clone
 ; Most earlier functionality now in core, module in dev only, check later
@@ -47,15 +51,17 @@ projects[] = site_map
 projects[strongarm][version] =  2.0-beta2
 ;projects[nodequeue][version] = 7.x-2.0-alpha1
 ;projects[] =  backup_migrate
+projects[flag] =  2.x-beta5
 
 ; Node work
 ;projects[] = field_group
-;projects[] = references
+projects[references] = 2.x-beta3
+projects[] = nodereference_url
 
 ; Fields
 projects[] = date
 ; needs translation/localization
-projects[calendar][version] = 1.0-alpha3
+projects[calendar][version] = 2.0-alpha1
 projects[] = link
 ; Improves node insetion/edition interface
 projects[] = field_group
@@ -72,6 +78,7 @@ projects[] = image_resize_filter
 ;projects[] = media_flickr
 ;projects[] = flickr
 ;rotating_banner -> acquia project, requires media
+projects[] = htmlpurifier
 
 ; Adminstrator UI
 ; Improvements for content administrators
@@ -90,6 +97,10 @@ projects[] = image_resize_filter
 projects[] = libraries
 projects[views_slideshow] = 3.0-alpha1
 projects[] = views_bulk_operations
+; former views attach
+projects[] = eva
+; Order views results using UI
+projects[draggableviews] = 1.x-dev
 
 ; Performance Optimization
 ;see more on http://drupal.org/project/memcache
@@ -106,6 +117,9 @@ projects[] = globalredirect
 
 ; i18n
 projects[] = transliteration
+projects[variable] = 1.0
+projects[i18n] = 1.0-beta6
+;projects[entity_translation] = 1.x-dev
 
 ; Localization
 ; Automatic downloads and updates for translations
@@ -140,6 +154,12 @@ libraries[ckeditor][destination] = "libraries"
 libraries[jquery_cycle][download][type] = "get"
 libraries[jquery_cycle][download][url] = "http://www.malsup.com/jquery/cycle/release/jquery.cycle.zip?v2.99"
 libraries[jquery_cycle][directory_name] = "jquery.cycle"
+libraries[jquery_cycle][destination] = "libraries"
+
+; JQuery Cicle
+libraries[jquery_cycle][download][type] = "get"
+libraries[jquery_cycle][download][url] = "http://htmlpurifier.org/releases/htmlpurifier-4.3.0.zip"
+libraries[jquery_cycle][directory_name] = "htmlpurifier"
 libraries[jquery_cycle][destination] = "libraries"
 
 ; ckedit profile via drupal-org.make
