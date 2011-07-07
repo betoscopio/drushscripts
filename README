@@ -1,4 +1,4 @@
-Base Drush Make files to use for build a Drupal distribution or a development sandbox.
+Base Drush Make files to use as base for build a Drupal distribution or a development sandbox.
 Contains a selection of commonly used modules, selected by my interests on site building.
 For use just type:
 $drush make file.make [install_directory]

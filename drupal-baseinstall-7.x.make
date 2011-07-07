@@ -5,6 +5,9 @@
 ; To use type following command:
 ;     $ drush make distro.make [directory]
 
+; Some modules (flag, draggableviews) are downloaded using git for avoid this issue http://drupal.org/node/954476
+; For more info about parameters see http://drupalcode.org/project/drush_make.git/blob_plain/refs/heads/6.x-2.x:/README.txt
+
 
 ; Core version
 ; ------------
@@ -20,13 +23,14 @@ api = 2
 
 ; Core project
 ; ------------
-projects[drupal][version] = 7.0
+; If is not set choose the latest stable version of the specified core
+;projects[drupal][version] = 7.4
 
 ; Projects
 ; --------
-projects[ctools] = 1.0-alpha4
-projects[views] = 3.0-beta3
-projects[features] = 1.0-beta2
+projects[ctools] = 1.0-beta1
+projects[views] = 3.0-rc1
+projects[features] = 1.0-beta3
 ;projects[features_plumber] = 1.0-alpha3
 ;projects[features_override] = 1.0-beta1
 ; To see the difference in overriden features
@@ -48,14 +52,22 @@ projects[] = site_map
 ;projects[] = node_clone
 ; Most earlier functionality now in core, module in dev only, check later
 ;projects[] = better_formats
+; Needed Patch for fix language negociation
 projects[strongarm][version] =  2.0-beta2
+; Issue http://drupal.org/node/998070
+projects[strongarm][patch][998070] = http://drupal.org/files/issues/strongarm-lang_pref-998070_0.patch
+; Another fix, issue http://drupal.org/node/1062452
+;projects[strongarm][patch][1062452] = http://drupal.org/files/issues/strongarm_set_conf-needs-to-be-called-sooner-1062452--3.patch
+
 ;projects[nodequeue][version] = 7.x-2.0-alpha1
 ;projects[] =  backup_migrate
-projects[flag] =  2.x-beta5
+;projects[flag] =  2.0-beta5
+projects[flag][download][type] = git
+projects[flag][download][revision] = "master"
+;projects[openidadmin][version] = 1.0
 
 ; Node work
-;projects[] = field_group
-projects[references] = 2.x-beta3
+projects[references] = 2.0-beta3
 projects[] = nodereference_url
 
 ; Fields
@@ -91,16 +103,23 @@ projects[] = htmlpurifier
 ; Improvements in configuration capability of the administration theme
 ;projects[] = admin_theme
 
+; Feeds
+;projects[] = feeds
+; Modify data before import
+;projects[] = feeds_tamper
+
 ; Views
 ; Requierement for views_slideshow
 ; Required by views_slideshow and other modules
-projects[] = libraries
+projects[libraries] = 2.x-dev
 projects[views_slideshow] = 3.0-alpha1
+projects[entity] = 1.0-beta9
 projects[] = views_bulk_operations
 ; former views attach
-projects[] = eva
+projects[eva] = 1.0
 ; Order views results using UI
-projects[draggableviews] = 1.x-dev
+; projects[draggableviews] = 1.x-dev
+projects[draggableviews][download][type] = git
 
 ; Performance Optimization
 ;see more on http://drupal.org/project/memcache
@@ -111,15 +130,18 @@ projects[draggableviews] = 1.x-dev
 ;projects[ctools][version] = 1.3
 
 ; SEO
+;projects[] = seo_checklist
 ;projects[] = xmlsitemap
-projects[] = globalredirect
+; Using devel version from 2011/05/02, that fix some issues with i18n
+projects[globalredirect] = 1.x-dev
 ;projects[] = google_analytics
 
 ; i18n
 projects[] = transliteration
 projects[variable] = 1.0
-projects[i18n] = 1.0-beta6
+projects[i18n] = 1.0-beta7
 ;projects[entity_translation] = 1.x-dev
+projects[i18nviews] = 3.x-dev
 
 ; Localization
 ; Automatic downloads and updates for translations
@@ -136,6 +158,13 @@ projects[] = styleguide
 ;projects[] = backup_migrate
 ; Similar to user switcher
 ;projects[] = masquerade
+
+; Use a external SMTP
+; Download release in development
+;projects[smtp][version] = 7.x-1.x-dev
+projects[smtp][subdir] = contrib
+projects[smtp][download][type] = git
+projects[smtp][download][revision] = "7.x-1.x"
 
 
 ;Themes
@@ -156,7 +185,7 @@ libraries[jquery_cycle][download][url] = "http://www.malsup.com/jquery/cycle/rel
 libraries[jquery_cycle][directory_name] = "jquery.cycle"
 libraries[jquery_cycle][destination] = "libraries"
 
-; JQuery Cicle
+; HTML Purifier
 libraries[jquery_cycle][download][type] = "get"
 libraries[jquery_cycle][download][url] = "http://htmlpurifier.org/releases/htmlpurifier-4.3.0.zip"
 libraries[jquery_cycle][directory_name] = "htmlpurifier"
