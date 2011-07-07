@@ -186,10 +186,10 @@ libraries[jquery_cycle][directory_name] = "jquery.cycle"
 libraries[jquery_cycle][destination] = "libraries"
 
 ; HTML Purifier
-libraries[jquery_cycle][download][type] = "get"
-libraries[jquery_cycle][download][url] = "http://htmlpurifier.org/releases/htmlpurifier-4.3.0.zip"
-libraries[jquery_cycle][directory_name] = "htmlpurifier"
-libraries[jquery_cycle][destination] = "libraries"
+libraries[htmlpurifier][download][type] = "get"
+libraries[htmlpurifier][download][url] = "http://htmlpurifier.org/releases/htmlpurifier-4.3.0.zip"
+libraries[htmlpurifier][directory_name] = "htmlpurifier"
+libraries[htmlpurifier][destination] = "libraries"
 
 ; ckedit profile via drupal-org.make
 ; ----------------------------------
