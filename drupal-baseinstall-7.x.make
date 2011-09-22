@@ -31,7 +31,6 @@ projects[drupal][version] = 7.8
 projects[ctools] = 1.0-rc1
 projects[views] = 3.0-rc1
 ; Issue http://drupal.org/node/1032836#comment-4599172 , problem with calendar views exported to features
-projects[views][patch][1032836] = http://drupal.org/files/issues/1032836_0.patch
 projects[features] = 1.0-beta4
 ;projects[features_plumber] = 1.0-alpha3
 ;projects[features_override] = 1.0-beta1
@@ -194,7 +193,7 @@ projects[smtp][download][revision] = "7.x-1.x"
 
 
 ;Themes
-projects[ninesixty][type] = omega
+projects[omega][type] = theme
 
 ; Libraries
 ; ---------
