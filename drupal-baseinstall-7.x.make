@@ -66,7 +66,7 @@ projects[strongarm][version] =  2.0-beta3
 ;projects[strongarm][version] =  2.0-dev
 
 ;Better content administration
-projects[workbech] = 1.0
+projects[workbench] = 1.0
 ;projects[workbench_files] = 1.0
 ;projects[workbech_media] = 1.0
 
