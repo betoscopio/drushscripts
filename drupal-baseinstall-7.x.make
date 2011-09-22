@@ -24,17 +24,19 @@ api = 2
 ; Core project
 ; ------------
 ; If is not set choose the latest stable version of the specified core
-;projects[drupal][version] = 7.4
+projects[drupal][version] = 7.8
 
 ; Projects
 ; --------
-projects[ctools] = 1.0-beta1
+projects[ctools] = 1.0-rc1
 projects[views] = 3.0-rc1
-projects[features] = 1.0-beta3
+; Issue http://drupal.org/node/1032836#comment-4599172 , problem with calendar views exported to features
+projects[views][patch][1032836] = http://drupal.org/files/issues/1032836_0.patch
+projects[features] = 1.0-beta4
 ;projects[features_plumber] = 1.0-alpha3
 ;projects[features_override] = 1.0-beta1
 ; To see the difference in overriden features
-projects[diff] = 1.x-dev
+projects[diff] = 2.0
 ;use git clone --branch 7.views-post-alpha1-exportable-fix http://git.drupal.org/project/features.git
 ;use patch to work correctly with the latest version of views
 projects[] = token
@@ -45,23 +47,35 @@ projects[] = advanced_help
 projects[] = site_map
 ;projects[] = admin_menu
 ;projects[] = context
-;projects[boxes] = 1.0-beta3
+;projects[boxes] = 1.0-beta5
 ; Improves administration page of modules
-;projects[] = module_filter
+projects[] = module_filter
 ; Create node based on other, base for node templating
 ;projects[] = node_clone
 ; Most earlier functionality now in core, module in dev only, check later
 ;projects[] = better_formats
 ; Needed Patch for fix language negociation
-projects[strongarm][version] =  2.0-beta2
-; Issue http://drupal.org/node/998070
-projects[strongarm][patch][998070] = http://drupal.org/files/issues/strongarm-lang_pref-998070_0.patch
-; Another fix, issue http://drupal.org/node/1062452
+;projects[strongarm][version] =  2.0-beta2
+; Issue glohttp://drupal.org/node/998070
+;projects[strongarm][patch][998070] = http://drupal.org/files/issues/strongarm-lang_pref-998070_0.patch
+; Another fix to the same problem, issue http://drupal.org/node/1062452
 ;projects[strongarm][patch][1062452] = http://drupal.org/files/issues/strongarm_set_conf-needs-to-be-called-sooner-1062452--3.patch
+; Seems that new version fix the problems, still may check
+projects[strongarm][version] =  2.0-beta3
+; Fixes problems with globalredirect http://drupal.org/node/998070#comment-4842624
+;projects[strongarm][version] =  2.0-dev
 
-;projects[nodequeue][version] = 7.x-2.0-alpha1
+;Better content administration
+projects[workbech] = 1.0
+;projects[workbench_files] = 1.0
+;projects[workbech_media] = 1.0
+
+;projects[workbench_access] = 1.0
+;projects[workbench_moderation] = 1.0
+
+;projects[nodequeue][version] = 2.0-beta1
 ;projects[] =  backup_migrate
-;projects[flag] =  2.0-beta5
+;projects[flag] =  2.0-beta6
 projects[flag][download][type] = git
 projects[flag][download][revision] = "master"
 ;projects[openidadmin][version] = 1.0
@@ -71,26 +85,31 @@ projects[references] = 2.0-beta3
 projects[] = nodereference_url
 
 ; Fields
-projects[] = date
+projects[date] = 2.0-alpha4
 ; needs translation/localization
-projects[calendar][version] = 2.0-alpha1
+projects[calendar][version] = 3.0-alpha1
 projects[] = link
 ; Improves node insetion/edition interface
-projects[] = field_group
+;projects[] = field_group
 
 ; GUI
-projects[] = wysiwyg
-; Maybe completly replaced later for "media" module, now is more stable
-projects[] = insert
+projects[wysiwyg] = 2.x-dev
+; Issue http://drupal.org/node/624018#comment-4858700, needs the *entity* module to be used
+projects[wysiwyg][patch][624018] = http://drupal.org/files/issues/wysiwyg-7.x-2.x-entity-exportables-624018-208_drush_make.patch
 projects[] = image_resize_filter
-; wait, still beta and unstable
-;projects[] = media
-; Required by Media
-;projects[] = media
+; Use version 1 for production sites for now, version 2 still highly unstable (upgrade path working)
+;projects[media] = 1.0-beta5
+;projects[media_youtube] = 1.x-dev
+;1.x-dev or 1.0-alpha5
+; use 'folder' git version
+; apply some patch--- not ready
+;projects[] = media_browser_plus
 ;projects[] = media_flickr
+; Updates media and where is referenced
+;projects[] = media_update
 ;projects[] = flickr
 ;rotating_banner -> acquia project, requires media
-projects[] = htmlpurifier
+;projects[] = htmlpurifier
 
 ; Adminstrator UI
 ; Improvements for content administrators
@@ -113,10 +132,10 @@ projects[] = htmlpurifier
 ; Required by views_slideshow and other modules
 projects[libraries] = 2.x-dev
 projects[views_slideshow] = 3.0-alpha1
-projects[entity] = 1.0-beta9
+projects[entity] = 1.0-beta10
 projects[] = views_bulk_operations
-; former views attach
-projects[eva] = 1.0
+; former Views Attach
+; projects[eva] = 1.0
 ; Order views results using UI
 ; projects[draggableviews] = 1.x-dev
 projects[draggableviews][download][type] = git
@@ -126,13 +145,13 @@ projects[draggableviews][download][type] = git
 ;projects[] = memcache
 ;projects[] = varnish
 
-; Or an alternative, extended syntax:
-;projects[ctools][version] = 1.3
-
 ; SEO
 ;projects[] = seo_checklist
 ;projects[] = xmlsitemap
 ; Using devel version from 2011/05/02, that fix some issues with i18n
+; Related issue http://drupal.org/node/1034126
+; Other related issue to the problem http://drupal.org/node/774950#comment-4776766
+; Some strongarm patch may fix issues on globalredirect http://drupal.org/node/998070#comment-4842624
 projects[globalredirect] = 1.x-dev
 ;projects[] = google_analytics
 
@@ -142,6 +161,10 @@ projects[variable] = 1.0
 projects[i18n] = 1.0-beta7
 ;projects[entity_translation] = 1.x-dev
 projects[i18nviews] = 3.x-dev
+; Shows percentage of translated content per language
+;projects[translation_overview] = 2.0-beta1
+; May assing language to existing nodes, still with MAJOR BUG
+;projects[languageassign] = 1.2
 
 ; Localization
 ; Automatic downloads and updates for translations
@@ -151,11 +174,14 @@ projects[] = l10n_update
 
 ; Development
 projects[] = devel
-projects[] = devel_themer
+;projects[] = devel_themer
+;projects[] = drupalforfirebug
 projects[] = coder
 ; Very useful for theme development, shows page with drupal elements
 projects[] = styleguide
 ;projects[] = backup_migrate
+; Code Filter for text format, needs lib
+;projects[] = geshifilter
 ; Similar to user switcher
 ;projects[] = masquerade
 
@@ -168,14 +194,14 @@ projects[smtp][download][revision] = "7.x-1.x"
 
 
 ;Themes
-projects[ninesixty][type] = theme
+projects[ninesixty][type] = omega
 
 ; Libraries
 ; ---------
 
 ; CKEditor
 libraries[ckeditor][download][type] = "get"
-libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.5/ckeditor_3.5.tar.gz"
+libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.2/ckeditor_3.6.2.tar.gz"
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
@@ -191,14 +217,13 @@ libraries[htmlpurifier][download][url] = "http://htmlpurifier.org/releases/htmlp
 libraries[htmlpurifier][directory_name] = "htmlpurifier"
 libraries[htmlpurifier][destination] = "libraries"
 
-; ckedit profile via drupal-org.make
-; ----------------------------------
-;projects[ckedit][type] = profile
-;projects[ckedit][download][type] = git
-;projects[ckedit][download][url] = "git://github.com/doka/ckedit.git"
-;projects[ckedit][download][branch] = "master"
+; GeSHi - Generic Syntax Highlighter
+;libraries[geshi][download][type] = "get"
+;libraries[geshi][download][url] = "http://sourceforge.net/projects/geshi/files/geshi/GeSHi%201.0.8.10/GeSHi-1.0.8.10.tar.gz/download"
+;libraries[geshi][directory_name] = "geshi"
+;libraries[geshi][destination] = "libraries"
 
-; Clone a project from github.
+; Clone a project from github example.
 ;projects[tao][type] = theme
 ;projects[tao][download][type] = git
 ;projects[tao][download][url] = git://github.com/developmentseed/tao.git
