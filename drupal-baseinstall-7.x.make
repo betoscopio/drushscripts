@@ -24,7 +24,7 @@ api = 2
 ; Core project
 ; ------------
 ; If is not set choose the latest stable version of the specified core
-projects[drupal][version] = 7.8
+projects[drupal][version] = 7.9
 
 ; Projects
 ; --------
@@ -38,13 +38,13 @@ projects[features] = 1.0-beta4
 projects[diff] = 2.0
 ;use git clone --branch 7.views-post-alpha1-exportable-fix http://git.drupal.org/project/features.git
 ;use patch to work correctly with the latest version of views
-projects[] = token
-projects[] = pathauto
+projects[token] = 1.0-beta7
+projects[pathauto] = 1.0
 
 ; Admin
-projects[] = advanced_help
+projects[advanced_help] = 1.0-beta1
 projects[] = site_map
-;projects[] = admin_menu
+projects[] = admin_menu
 ;projects[] = context
 ;projects[boxes] = 1.0-beta5
 ; Improves administration page of modules
@@ -54,29 +54,19 @@ projects[] = module_filter
 ; Most earlier functionality now in core, module in dev only, check later
 ;projects[] = better_formats
 ; Needed Patch for fix language negociation
-;projects[strongarm][version] =  2.0-beta2
-; Issue glohttp://drupal.org/node/998070
-;projects[strongarm][patch][998070] = http://drupal.org/files/issues/strongarm-lang_pref-998070_0.patch
-; Another fix to the same problem, issue http://drupal.org/node/1062452
-;projects[strongarm][patch][1062452] = http://drupal.org/files/issues/strongarm_set_conf-needs-to-be-called-sooner-1062452--3.patch
-; Seems that new version fix the problems, still may check
-projects[strongarm][version] =  2.0-beta3
-; Fixes problems with globalredirect http://drupal.org/node/998070#comment-4842624
-;projects[strongarm][version] =  2.0-dev
+projects[strongarm][version] =  2.0-beta4
 
 ;Better content administration
-projects[workbench] = 1.0
-;projects[workbench_files] = 1.0
-;projects[workbech_media] = 1.0
+projects[workbench] = 1.1
+;projects[workbench_files] = 1.1
+;projects[workbech_media] = 1.1
 
 ;projects[workbench_access] = 1.0
 ;projects[workbench_moderation] = 1.0
 
 ;projects[nodequeue][version] = 2.0-beta1
 ;projects[] =  backup_migrate
-;projects[flag] =  2.0-beta6
-projects[flag][download][type] = git
-projects[flag][download][revision] = "master"
+projects[flag] =  2.0-beta6
 ;projects[openidadmin][version] = 1.0
 
 ; Node work
@@ -92,12 +82,15 @@ projects[] = link
 ;projects[] = field_group
 
 ; GUI
+projects[menu_block] =  2.x-dev
+projects[menu_positiono] =  1.0
 projects[wysiwyg] = 2.x-dev
-; Issue http://drupal.org/node/624018#comment-4858700, needs the *entity* module to be used
-projects[wysiwyg][patch][624018] = http://drupal.org/files/issues/wysiwyg-7.x-2.x-entity-exportables-624018-208_drush_make.patch
+; Changes commited to dev, usable expotables  input formats.
+; Issue http://drupal.org/node/624018#comment-5098162, needs the *entity* module to be used
+projects[wysiwyg][patch][624018-211] = http://drupal.org/files/0001-feature.inc-from-624018-211.patch
 projects[] = image_resize_filter
 ; Use version 1 for production sites for now, version 2 still highly unstable (upgrade path working)
-;projects[media] = 1.0-beta5
+;projects[media] = 1.0-rc2
 ;projects[media_youtube] = 1.x-dev
 ;1.x-dev or 1.0-alpha5
 ; use 'folder' git version
@@ -129,15 +122,15 @@ projects[] = image_resize_filter
 ; Views
 ; Requierement for views_slideshow
 ; Required by views_slideshow and other modules
-projects[libraries] = 2.x-dev
+projects[libraries] = 2.0-aplha1
 projects[views_slideshow] = 3.0-alpha1
-projects[entity] = 1.0-beta10
+projects[entity] = 1.0-rc1
 projects[] = views_bulk_operations
 ; former Views Attach
 ; projects[eva] = 1.0
 ; Order views results using UI
-; projects[draggableviews] = 1.x-dev
-projects[draggableviews][download][type] = git
+projects[draggableviews] = 1.x-dev
+;projects[draggableviews][download][type] = git
 
 ; Performance Optimization
 ;see more on http://drupal.org/project/memcache
@@ -152,6 +145,7 @@ projects[draggableviews][download][type] = git
 ; Other related issue to the problem http://drupal.org/node/774950#comment-4776766
 ; Some strongarm patch may fix issues on globalredirect http://drupal.org/node/998070#comment-4842624
 projects[globalredirect] = 1.x-dev
+projects[redirect] = 1.0-beta3
 ;projects[] = google_analytics
 
 ; i18n
@@ -172,7 +166,7 @@ projects[] = l10n_update
 ; install profile as a example.
 
 ; Development
-projects[] = devel
+projects[devel] = 1.2
 ;projects[] = devel_themer
 ;projects[] = drupalforfirebug
 projects[] = coder
@@ -193,6 +187,7 @@ projects[smtp][download][revision] = "7.x-1.x"
 
 
 ;Themes
+projects[omega_tools] = 3.0-rc3
 projects[omega][type] = theme
 
 ; Libraries
