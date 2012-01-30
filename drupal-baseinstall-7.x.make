@@ -24,16 +24,17 @@ api = 2
 ; Core project
 ; ------------
 ; If is not set choose the latest stable version of the specified core
-projects[drupal][version] = 7.9
+projects[drupal][version] = 7.10
 
 ; Projects
 ; --------
 projects[ctools] = 1.0-rc1
 projects[views] = 3.0-rc1
 ; Issue http://drupal.org/node/1032836#comment-4599172 , problem with calendar views exported to features
-projects[features] = 1.0-beta4
+projects[features] = 1.0-beta6
 ;projects[features_plumber] = 1.0-alpha3
 ;projects[features_override] = 1.0-beta1
+:projects[ftools] = 1.3
 ; To see the difference in overriden features
 projects[diff] = 2.0
 ;use git clone --branch 7.views-post-alpha1-exportable-fix http://git.drupal.org/project/features.git
@@ -55,6 +56,10 @@ projects[] = module_filter
 ;projects[] = better_formats
 ; Needed Patch for fix language negociation
 projects[strongarm][version] =  2.0-beta4
+; Allow more granular permissions on publishing options.
+projects[] = override_node_options
+; Granular permisions to see unpublished nodes.
+projects[] = view_unpublished
 
 ;Better content administration
 projects[workbench] = 1.1
@@ -80,11 +85,12 @@ projects[calendar][version] = 3.0-alpha1
 projects[] = link
 ; Improves node insetion/edition interface
 ;projects[] = field_group
+;projects[entityreference] = 1.0-beta2
 
 ; GUI
 projects[menu_block] =  2.x-dev
-projects[menu_positiono] =  1.0
-projects[wysiwyg] = 2.x-dev
+projects[menu_position] =  1.0
+projects[wysiwyg] = 2.1
 ; Changes commited to dev, usable expotables  input formats.
 ; Issue http://drupal.org/node/624018#comment-5098162, needs the *entity* module to be used
 projects[wysiwyg][patch][624018-211] = http://drupal.org/files/0001-feature.inc-from-624018-211.patch
@@ -102,6 +108,14 @@ projects[] = image_resize_filter
 ;projects[] = flickr
 ;rotating_banner -> acquia project, requires media
 ;projects[] = htmlpurifier
+projects[options_element] = 1.5
+; This module extends reference fields like the user and node reference fields by adding links to add, 
+; edit and search for references through a dialog. 
+;projects[references_dialog] = 1.0-alpha3
+
+
+; Eye Candy
+;projects[] = slidebox
 
 ; Adminstrator UI
 ; Improvements for content administrators
@@ -122,7 +136,7 @@ projects[] = image_resize_filter
 ; Views
 ; Requierement for views_slideshow
 ; Required by views_slideshow and other modules
-projects[libraries] = 2.0-aplha1
+projects[libraries] = 2.0-alpha2
 projects[views_slideshow] = 3.0-alpha1
 projects[entity] = 1.0-rc1
 projects[] = views_bulk_operations
@@ -131,6 +145,8 @@ projects[] = views_bulk_operations
 ; Order views results using UI
 projects[draggableviews] = 1.x-dev
 ;projects[draggableviews][download][type] = git
+; Implementation of Quicksand Jquery plugin http://razorjack.net/quicksand/
+;projects[views_quicksand] = 1.x-dev
 
 ; Performance Optimization
 ;see more on http://drupal.org/project/memcache
@@ -147,6 +163,12 @@ projects[draggableviews] = 1.x-dev
 projects[globalredirect] = 1.x-dev
 projects[redirect] = 1.0-beta3
 ;projects[] = google_analytics
+projects[] = metatag
+
+;Social Media
+;projects[] = socialmedia
+;projects[] = widgets
+;projects[] = on_the_web
 
 ; i18n
 projects[] = transliteration
@@ -171,7 +193,7 @@ projects[devel] = 1.2
 ;projects[] = drupalforfirebug
 projects[] = coder
 ; Very useful for theme development, shows page with drupal elements
-projects[] = styleguide
+projects[styleguide] = 1.0
 ;projects[] = backup_migrate
 ; Code Filter for text format, needs lib
 ;projects[] = geshifilter
