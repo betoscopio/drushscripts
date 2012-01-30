@@ -29,16 +29,13 @@ projects[drupal][version] = 7.10
 ; Projects
 ; --------
 projects[ctools] = 1.0-rc1
-projects[views] = 3.0-rc1
-; Issue http://drupal.org/node/1032836#comment-4599172 , problem with calendar views exported to features
+projects[views] = 3.1
 projects[features] = 1.0-beta6
 ;projects[features_plumber] = 1.0-alpha3
 ;projects[features_override] = 1.0-beta1
 :projects[ftools] = 1.3
 ; To see the difference in overriden features
 projects[diff] = 2.0
-;use git clone --branch 7.views-post-alpha1-exportable-fix http://git.drupal.org/project/features.git
-;use patch to work correctly with the latest version of views
 projects[token] = 1.0-beta7
 projects[pathauto] = 1.0
 
@@ -54,8 +51,7 @@ projects[] = module_filter
 ;projects[] = node_clone
 ; Most earlier functionality now in core, module in dev only, check later
 ;projects[] = better_formats
-; Needed Patch for fix language negociation
-projects[strongarm][version] =  2.0-beta4
+projects[strongarm][version] =  2.0-beta5
 ; Allow more granular permissions on publishing options.
 projects[] = override_node_options
 ; Granular permisions to see unpublished nodes.
@@ -66,8 +62,8 @@ projects[workbench] = 1.1
 ;projects[workbench_files] = 1.1
 ;projects[workbech_media] = 1.1
 
-;projects[workbench_access] = 1.0
-;projects[workbench_moderation] = 1.0
+;projects[workbench_access] = 1.1
+;projects[workbench_moderation] = 1.1
 
 ;projects[nodequeue][version] = 2.0-beta1
 ;projects[] =  backup_migrate
@@ -75,13 +71,14 @@ projects[flag] =  2.0-beta6
 ;projects[openidadmin][version] = 1.0
 
 ; Node work
-projects[references] = 2.0-beta3
+projects[references] = 2.0
 projects[] = nodereference_url
+; Should be used in favor than references
+;projects[entityreference] = 1.0-beta3
 
 ; Fields
-projects[date] = 2.0-alpha4
-; needs translation/localization
-projects[calendar][version] = 3.0-alpha1
+projects[date] = 2.0-rc1
+projects[calendar][version] = 3.0-alpha2
 projects[] = link
 ; Improves node insetion/edition interface
 ;projects[] = field_group
@@ -96,11 +93,8 @@ projects[wysiwyg] = 2.1
 projects[wysiwyg][patch][624018-211] = http://drupal.org/files/0001-feature.inc-from-624018-211.patch
 projects[] = image_resize_filter
 ; Use version 1 for production sites for now, version 2 still highly unstable (upgrade path working)
-;projects[media] = 1.0-rc2
-;projects[media_youtube] = 1.x-dev
-;1.x-dev or 1.0-alpha5
-; use 'folder' git version
-; apply some patch--- not ready
+projects[media] = 1.0-rc3
+projects[media_youtube] = 1.x-dev
 ;projects[] = media_browser_plus
 ;projects[] = media_flickr
 ; Updates media and where is referenced
@@ -137,13 +131,13 @@ projects[options_element] = 1.5
 ; Requierement for views_slideshow
 ; Required by views_slideshow and other modules
 projects[libraries] = 2.0-alpha2
-projects[views_slideshow] = 3.0-alpha1
+projects[views_slideshow] = 3.0
 projects[entity] = 1.0-rc1
 projects[] = views_bulk_operations
 ; former Views Attach
 ; projects[eva] = 1.0
 ; Order views results using UI
-projects[draggableviews] = 1.x-dev
+projects[draggableviews] = 2.x-dev
 ;projects[draggableviews][download][type] = git
 ; Implementation of Quicksand Jquery plugin http://razorjack.net/quicksand/
 ;projects[views_quicksand] = 1.x-dev
@@ -160,7 +154,7 @@ projects[draggableviews] = 1.x-dev
 ; Related issue http://drupal.org/node/1034126
 ; Other related issue to the problem http://drupal.org/node/774950#comment-4776766
 ; Some strongarm patch may fix issues on globalredirect http://drupal.org/node/998070#comment-4842624
-projects[globalredirect] = 1.x-dev
+;projects[globalredirect] = 1.x-dev
 projects[redirect] = 1.0-beta3
 ;projects[] = google_analytics
 projects[] = metatag
@@ -201,12 +195,7 @@ projects[styleguide] = 1.0
 ;projects[] = masquerade
 
 ; Use a external SMTP
-; Download release in development
-;projects[smtp][version] = 7.x-1.x-dev
-projects[smtp][subdir] = contrib
-projects[smtp][download][type] = git
-projects[smtp][download][revision] = "7.x-1.x"
-
+;projects[smtp][version] = 1.0-beta1
 
 ;Themes
 projects[omega_tools] = 3.0-rc3
@@ -238,11 +227,6 @@ libraries[htmlpurifier][destination] = "libraries"
 ;libraries[geshi][download][url] = "http://sourceforge.net/projects/geshi/files/geshi/GeSHi%201.0.8.10/GeSHi-1.0.8.10.tar.gz/download"
 ;libraries[geshi][directory_name] = "geshi"
 ;libraries[geshi][destination] = "libraries"
-
-; Clone a project from github example.
-;projects[tao][type] = theme
-;projects[tao][download][type] = git
-;projects[tao][download][url] = git://github.com/developmentseed/tao.git
 
 ; If you want to install a module into a sub-directory, you can use the
 ; `subdir` attribute.
