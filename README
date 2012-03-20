@@ -7,6 +7,7 @@ Some modules/themes/libraries have a fixed version defined for make sure of comp
 Always check the files to see if the specified versions suit to your case.
 
 Contains:
-- drupal-install-6.x.make
+- drupal-install-6.x.make (outdated)
 - drupal-baseinstall-7.x.make
+- drupal-simple-7.x.make
 
