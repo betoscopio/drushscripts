@@ -24,27 +24,28 @@ api = 2
 ; Core project
 ; ------------
 ; If is not set choose the latest stable version of the specified core
-projects[drupal][version] = 7.12
+projects[drupal][version] = 7.14
 
-; Projects
+; Base
 ; --------
-projects[ctools] = 1.0-rc2
-projects[views] = 3.3
-projects[token] = 1.0-rc1
-projects[pathauto] = 1.0
-projects[entity] = 1.0-rc1
+projects[] = ctools
+projects[] = views
+projects[] = token
+projects[] = pathauto
+projects[] = entity
+projects[] = strongarm
 
 ; Deploy
 ; -------
-projects[features] = 1.0-rc1
+projects[features] = 1.0-rc2
 ;projects[features_plumber] = 1.0-alpha3
-;projects[features_override] = 2.0-alpha1
-:projects[ftools] = 1.4
-; To see the difference in overriden features
-projects[diff] = 2.0
+projects[features_override] = 2.0-alpha1
+;projects[] = ftools
+; To see the difference in overriden features and changes on node revisions.
+projects[] = diff
 
 ; Admin
-projects[advanced_help] = 1.0
+projects[] = advanced_help
 projects[] = site_map
 projects[] = admin_menu
 ;projects[] = context
@@ -54,39 +55,53 @@ projects[] = module_filter
 ;projects[] = node_clone
 ; Most earlier functionality now in core, module in dev only, check later
 ;projects[] = better_formats
-projects[strongarm][version] =  2.0-beta5
 ; Allow more granular permissions on publishing options.
 projects[] = override_node_options
 ; Granular permisions to see unpublished nodes.
 projects[] = view_unpublished
 
 ;Better content administration
-projects[workbench] = 1.1
-;projects[workbench_files] = 1.1
-;projects[workbech_media] = 1.1
+projects[] = workbench
+;projects[] = workbench_files
+;projects[] = workbech_media
 
-;projects[workbench_access] = 1.1
-;projects[workbench_moderation] = 1.1
+;projects[] = workbench_access
+;projects[] = workbench_moderation
 
-;projects[backup_migrate] =  2.2
-projects[flag] =  2.0-beta6
+;projects[backup_migrate] =  2.3
+projects[] =  flag
 
 ; Node work
-;projects[references] = 2.0
+;projects[] = references
 ;projects[] = nodereference_url
 ; Should be used in favor than references
-projects[entityreference] = 1.0-beta5
+projects[] = entityreference
+; Use with entity reference
+;project[] = entityreference_view_widget
+; Similar to nodereference_url
+;project[] = entityreference_prepopulate
+; Adds a 'Add Node' button for the creation of referenced nodes.
+; http://drupal.org/sandbox/hazah/1488826
+;project[] = prepopulate_create_node_links
+; Autocreate an entity while referencing
+;project[] = entityconnect
+; Improves interface of referenced entities
+;project[] = references_dialog
 
 ; Fields
-projects[date] = 2.2
-projects[calendar] = 3.0
+projects[] = date
+projects[] = calendar
 projects[] = link
 ; Improves node insetion/edition interface
 ;projects[] = field_group
-projects[options_element] = 1.7
-; This module extends reference fields like the user and node reference fields by adding links to add, 
-; edit and search for references through a dialog. 
-;projects[references_dialog] = 1.0-alpha3
+projects[] = options_element
+; Adds a new FAPI widget, '#type' => 'multiselect' selectable in multi selectable lists.
+;projects[] = multiselect
+; Change the widget of multi selectable lists using JQuery
+;projects[] = improved_multi_select
+; Hour; minute; second field
+;projects[] = hms_field
+;projects[] = field_validation
 
 ; GUI
 projects[menu_block] =  2.3
@@ -96,8 +111,14 @@ projects[wysiwyg] = 2.1
 ; Issue http://drupal.org/node/624018#comment-5098162, needs the *entity* module to be used
 ;projects[wysiwyg][patch][624018-211] = http://drupal.org/files/0001-feature.inc-from-624018-211.patch
 projects[] = image_resize_filter
-; Use version 1 for production sites for now, version 2 still highly unstable (upgrade path working)
-projects[media] = 1.0-rc3
+
+; Use version 1 for production sites for now, version 2 still unstable (upgrade path working)
+projects[media][subdir] = contrib
+projects[media][version] = 1.1
+; Resizing images in WYSIWYG broken in media-7.x-1.0-rc3 & 2.0-unstable3
+; Issue http://drupal.org/node/1411340#comment-6051746
+projects[media][patch][1411340] = http://drupal.org/files/media-Resizing_images_in_WYSIWYG-1411340-13.patch
+
 projects[media_youtube] = 1.0-beta3
 ; Add crop, rotate and scale tools to media images.
 ;projects[media_crop] = 1.0-beta3
@@ -110,6 +131,9 @@ projects[media_youtube] = 1.0-beta3
 ;projects[] = htmlpurifier
 ;Open External links in new window
 projects[] = extlink
+
+;Adaptive Image Styles (ais), responsive images.
+project[] = ais
 
 
 ; Eye Candy
@@ -135,34 +159,40 @@ projects[] = extlink
 ; Required by views_slideshow and other modules
 projects[libraries] = 2.0-alpha2
 projects[views_slideshow] = 3.0
-projects[views_bulk_operations] = 3.0-rc1
+projects[] = views_bulk_operations
 ; former Views Attach
 ; projects[eva] = 1.1
 ; Order views results using UI
-projects[draggableviews] = 2.x-dev
+projects[] = draggableviews
 ; Implementation of Quicksand Jquery plugin http://razorjack.net/quicksand/
 ;projects[views_quicksand] = 1.0-beta5
 ; Improvements in exposed filters http://www.lullabot.com/articles/module-monday-views-dependent-filters
 ;projects[] = views_dependent_filters
 ;projects[] = better_exposed_filters
 ;projects[] = global_filter
+; Change default taxonomy views
+;projects[] = taxonomy_view_mode
+;projects[] = tvi
 
 ; Performance Optimization
 ;see more on http://drupal.org/project/memcache
 ;projects[] = memcache
 ;projects[] = varnish
+; Minify core JS
+projects[] = speedy
 
 ; SEO
 ;projects[] = seo_checklist
-;projects[sitemap] = 1.0
+;projects[] = sitemap
 ;projects[] = xmlsitemap
+;projects[] = site_verify
 ;;projects[] = seo
 ; Using devel version from 2011/05/02, that fix some issues with i18n
 ; Related issue http://drupal.org/node/1034126
 ; Other related issue to the problem http://drupal.org/node/774950#comment-4776766
 ; Some strongarm patch may fix issues on globalredirect http://drupal.org/node/998070#comment-4842624
 ;projects[globalredirect] = 1.x-dev
-projects[redirect] = 1.0-beta4
+;projects[redirect] = 1.0-beta4
 ;projects[] = google_analytics
 projects[] = metatag
 
@@ -170,13 +200,21 @@ projects[] = metatag
 ;projects[] = socialmedia
 ;projects[] = widgets
 ;projects[] = on_the_web
+; Simplier and more extensible of the fb modules
+;projects[] = fboauth
 
 ;projects[] = service_links
 
+; User management
+; More info about it http://drupal.cocomore.com/blog/beware-drupals-administer-users-permission
+;project[] = subuser
+;project[] = user_settings_access
+;project[] = role_delegation
+
 ; i18n
 projects[] = transliteration
-projects[variable] = 1.1
-projects[i18n] = 1.4
+projects[] = variable
+projects[] = i18n
 ;projects[entity_translation] = 1.0-alpha1
 projects[i18nviews] = 3.x-dev
 ; Shows percentage of translated content per language
@@ -200,6 +238,11 @@ projects[styleguide] = 1.0
 ;projects[] = geshifilter
 ; Similar to user switcher
 ;projects[] = masquerade
+; Model Entities, base/example project for the entities development
+;projects[] = model
+; Examples for Developers, this project aims to provide high-quality, 
+; well-documented API examples for a broad range of Drupal core functionality.
+;projects[] = examples
 
 ; Use a external SMTP
 ;projects[smtp][version] = 1.0-beta1
@@ -238,7 +281,3 @@ libraries[htmlpurifier][destination] = "libraries"
 ;libraries[geshi][download][url] = "http://sourceforge.net/projects/geshi/files/geshi/GeSHi%201.0.8.10/GeSHi-1.0.8.10.tar.gz/download"
 ;libraries[geshi][directory_name] = "geshi"
 ;libraries[geshi][destination] = "libraries"
-
-work; If you want to install a module into a sub-directory, you can use the
-; `subdir` attribute.
-;projects[admin_menu][subdir] = custom

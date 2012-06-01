@@ -21,20 +21,21 @@ api = 2
 ; Core project
 ; ------------
 ; If is not set choose the latest stable version of the specified core
-projects[drupal][version] = 7.12
+projects[drupal][version] = 7.14
 
-; Projects
+; Base
 ; --------
-projects[ctools] = 1.0-rc2
+projects[] = ctools
 projects[views] = 3.3
 projects[features] = 1.0-rc1
-:projects[ftools] = 1.3
+projects[strongarm][version] =  2.0-rc1
+;projects[] = ftools
 ; To see the difference in overriden features
-projects[diff] = 2.0
-projects[token] = 1.0-rc1
-projects[pathauto] = 1.0
-;projects[flag] =  2.0-beta6
-projects[entity] = 1.0-rc1
+projects[] = diff
+projects[] = token
+projects[] = pathauto
+;projects[] =  flag
+projects[] = entity
 
 ; Admin
 projects[] = admin_menu
@@ -42,35 +43,45 @@ projects[] = admin_menu
 projects[] = module_filter
 ; Create node based on other, base for node templating
 ;projects[] = node_clone
-projects[strongarm][version] =  2.0-beta5
 
 ;Better content administration
-projects[workbench] = 1.1
-;projects[workbench_files] = 1.1
-;projects[workbech_media] = 1.1
+projects[] = workbench
+;projects[] = workbench_files
+;projects[] = workbech_media
 
-;projects[workbench_access] = 1.1
-;projects[workbench_moderation] = 1.1
+;projects[] = workbench_access
+;projects[] = workbench_moderation
 
 ; Node work
 
 ; Fields
-;projects[date] = 2.2
-;projects[calendar] = 3.0
+;projects[] = date
+;projects[] = calendar
 projects[] = link
 ; Improves node insetion/edition interface
 ;projects[] = field_group
-projects[entityreference] = 1.0-beta5
+projects[] = entityreference
 
 ; GUI
 projects[menu_block] =  2.3
-projects[menu_position] =  1.1
-projects[wysiwyg] = 2.1
+projects[] =  menu_position
+
+projects[wysiwyg][version] = 2.1
+projects[wysiwyg][subdir] = contrib
+; Issue http://drupal.org/node/624018#comment-4033330, needs the *entity* module to be used
+projects[wysiwyg][patch][624018] = http://drupal.org/files/issues/624018-138-wysiwyg-entity-exportables.patch
+
 projects[] = image_resize_filter
-; Use version 1 for production sites for now, version 2 still highly unstable (upgrade path working)
-projects[media] = 1.0-rc3
-projects[media_youtube] = 1.0-beta3
-projects[options_element] = 1.7
+
+; Use version 1 for production sites for now, version 2 still unstable (upgrade path working)
+projects[media][subdir] = contrib
+projects[media][version] = 1.1
+; Resizing images in WYSIWYG broken in media-7.x-1.0-rc3 & 2.0-unstable3
+; Issue http://drupal.org/node/1411340#comment-6051746
+projects[media][patch][1411340] = http://drupal.org/files/media-Resizing_images_in_WYSIWYG-1411340-13.patch
+
+projects[] = media_youtube
+projects[] = options_element
 ; This module extends reference fields like the user and node reference fields by adding links to add, 
 ; edit and search for references through a dialog. 
 ;projects[references_dialog] = 1.0-alpha3
@@ -81,7 +92,11 @@ projects[] = extlink
 ; Requierement for views_slideshow
 ; Required by views_slideshow and other modules
 projects[libraries] = 2.0-alpha2
-projects[views_slideshow] = 3.0
+projects[] = views_slideshow
+
+; Performance Optimization
+; Minify core JS
+projects[] = speedy
 
 ; SEO
 ;projects[] = google_analytics
@@ -106,7 +121,7 @@ projects[devel] = 1.2
 projects[] = devel_themer
 projects[] = coder
 ; Very useful for theme development, shows page with drupal elements
-projects[styleguide] = 1.0
+projects[] = styleguide
 ;projects[] = backup_migrate
 ; Code Filter for text format, needs lib
 
@@ -116,7 +131,7 @@ projects[smtp][version] = 1.0-beta1
 
 
 ;Themes
-projects[omega_tools] = 3.0-rc3
+projects[] = omega_tools
 projects[omega][type] = theme
 
 ; Libraries
@@ -124,7 +139,7 @@ projects[omega][type] = theme
 
 ; CKEditor
 libraries[ckeditor][download][type] = "get"
-libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.2/ckeditor_3.6.2.tar.gz"
+libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz"
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
@@ -134,6 +149,8 @@ libraries[jquery_cycle][download][url] = "http://www.malsup.com/jquery/cycle/rel
 libraries[jquery_cycle][directory_name] = "jquery.cycle"
 libraries[jquery_cycle][destination] = "libraries"
 
-; If you want to install a module into a sub-directory, you can use the
-; `subdir` attribute.
-;projects[admin_menu][subdir] = custom
+; ColorBox
+libraries[colorbox][download][type] = "get"
+libraries[colorbox][download][url] = "http://www.jacklmoore.com/colorbox/colorbox.zip"
+libraries[colorbox][directory_name] = "colorbox"
+libraries[colorbox][destination] = "libraries"
