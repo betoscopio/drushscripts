@@ -21,17 +21,14 @@ api = 2
 ; Core project
 ; ------------
 ; If is not set choose the latest stable version of the specified core
-projects[drupal][version] = 7.14
+projects[drupal][version] = 7.15
 
 ; Base
 ; --------
 projects[] = ctools
-projects[views] = 3.3
-projects[features] = 1.0-rc1
-projects[strongarm][version] =  2.0-rc1
-;projects[] = ftools
-; To see the difference in overriden features
-projects[] = diff
+projects[views] = 3.5
+projects[] = features
+projects[] =  strongarm
 projects[] = token
 projects[] = pathauto
 ;projects[] =  flag
@@ -66,16 +63,13 @@ projects[] = entityreference
 projects[menu_block] =  2.3
 projects[] =  menu_position
 
-projects[wysiwyg][version] = 2.1
-projects[wysiwyg][subdir] = contrib
-; Issue http://drupal.org/node/624018#comment-4033330, needs the *entity* module to be used
-projects[wysiwyg][patch][624018] = http://drupal.org/files/issues/624018-138-wysiwyg-entity-exportables.patch
+projects[wysiwyg][version] = 2.2
 
 projects[] = image_resize_filter
 
 ; Use version 1 for production sites for now, version 2 still unstable (upgrade path working)
 projects[media][subdir] = contrib
-projects[media][version] = 1.1
+projects[media][version] = 1.2
 ; Resizing images in WYSIWYG broken in media-7.x-1.0-rc3 & 2.0-unstable3
 ; Issue http://drupal.org/node/1411340#comment-6051746
 projects[media][patch][1411340] = http://drupal.org/files/media-Resizing_images_in_WYSIWYG-1411340-13.patch
@@ -84,14 +78,14 @@ projects[] = media_youtube
 projects[] = options_element
 ; This module extends reference fields like the user and node reference fields by adding links to add, 
 ; edit and search for references through a dialog. 
-;projects[references_dialog] = 1.0-alpha3
+;projects[references_dialog] = 1.0-alpha4
 ;Open External links in new window
 projects[] = extlink
 
 ; Views
 ; Requierement for views_slideshow
 ; Required by views_slideshow and other modules
-projects[libraries] = 2.0-alpha2
+projects[] = libraries
 projects[] = views_slideshow
 
 ; Performance Optimization
@@ -117,7 +111,10 @@ projects[] = l10n_update
 ; install profile as a example.
 
 ; Development
-projects[devel] = 1.2
+;projects[] = ftools
+; To see the difference in overriden features
+projects[] = diff
+projects[] = devel
 projects[] = devel_themer
 projects[] = coder
 ; Very useful for theme development, shows page with drupal elements
@@ -127,7 +124,7 @@ projects[] = styleguide
 
 ; Use a external SMTP
 ; Download release in development
-projects[smtp][version] = 1.0-beta1
+projects[] = smtp
 
 
 ;Themes
@@ -139,7 +136,7 @@ projects[omega][type] = theme
 
 ; CKEditor
 libraries[ckeditor][download][type] = "get"
-libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.3/ckeditor_3.6.3.tar.gz"
+libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.4/ckeditor_3.6.4.zip"
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 

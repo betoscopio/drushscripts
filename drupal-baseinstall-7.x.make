@@ -24,7 +24,7 @@ api = 2
 ; Core project
 ; ------------
 ; If is not set choose the latest stable version of the specified core
-projects[drupal][version] = 7.14
+projects[drupal][version] = 7.15
 
 ; Base
 ; --------
@@ -35,14 +35,26 @@ projects[] = pathauto
 projects[] = entity
 projects[] = strongarm
 
+; http://www.lullabot.com/articles/module-monday-entity-construction-kit
+;projects[] = eck
+
+; Redirection
+;http://www.lullabot.com/articles/module-monday-field-redirection
+;projects[] = field_redirection
+http://www.lullabot.com/articles/module-monday-rabbit-hole
+;project[] = rabbit_hole
+;http://drupal.org/project/page_manager_redirect
+
 ; Deploy
 ; -------
-projects[features] = 1.0-rc2
+projects[] = features
 ;projects[features_plumber] = 1.0-alpha3
-projects[features_override] = 2.0-alpha1
+projects[] = features_override
 ;projects[] = ftools
 ; To see the difference in overriden features and changes on node revisions.
 projects[] = diff
+; Hacked, see changes core, contrib modules: http://fuseinteractive.ca/blog/hacked-module-drush-integration
+;projects[] = hacked
 
 ; Admin
 projects[] = advanced_help
@@ -68,7 +80,7 @@ projects[] = workbench
 ;projects[] = workbench_access
 ;projects[] = workbench_moderation
 
-;projects[backup_migrate] =  2.3
+;projects[backup_migrate] =  2.4
 projects[] =  flag
 
 ; Node work
@@ -105,23 +117,21 @@ projects[] = options_element
 
 ; GUI
 projects[menu_block] =  2.3
-projects[menu_position] =  1.1
-projects[wysiwyg] = 2.1
-; Changes commited to dev, usable expotables  input formats.
-; Issue http://drupal.org/node/624018#comment-5098162, needs the *entity* module to be used
-;projects[wysiwyg][patch][624018-211] = http://drupal.org/files/0001-feature.inc-from-624018-211.patch
+projects[] =  menu_position
+projects[wysiwyg] = 2.2
 projects[] = image_resize_filter
 
 ; Use version 1 for production sites for now, version 2 still unstable (upgrade path working)
 projects[media][subdir] = contrib
-projects[media][version] = 1.1
+projects[media][version] = 1.2
 ; Resizing images in WYSIWYG broken in media-7.x-1.0-rc3 & 2.0-unstable3
 ; Issue http://drupal.org/node/1411340#comment-6051746
 projects[media][patch][1411340] = http://drupal.org/files/media-Resizing_images_in_WYSIWYG-1411340-13.patch
 
 projects[media_youtube] = 1.0-beta3
-; Add crop, rotate and scale tools to media images.
-;projects[media_crop] = 1.0-beta3
+; Add crop, rotate and scale tools to media images, 
+; requires imgAreaSelect jQuery plugin: http://odyniec.net/projects/imgareaselect/
+;projects[] = media_crop
 ;projects[] = media_browser_plus
 ;projects[] = media_flickr
 ; Updates media and where is referenced
@@ -132,8 +142,16 @@ projects[media_youtube] = 1.0-beta3
 ;Open External links in new window
 projects[] = extlink
 
+; Layouts
+;projects[] = panels
+;projects[] = ds
+
 ;Adaptive Image Styles (ais), responsive images.
 project[] = ais
+project[] = cs_adaptive_image
+
+;Responsive videos using http://odyniec.net/projects/imgareaselect/
+project[] = fitvids
 
 
 ; Eye Candy
@@ -142,7 +160,6 @@ project[] = ais
 ; Adminstrator UI
 ; Improvements for content administrators
 ;projects[] = nodeformcols
-;projects[] = prepopulate	;D6 only
 ;projects[] = login_destination
 ;projects[] = auto_nodetitle
 ;projects[] = conditional_fields
@@ -157,11 +174,11 @@ project[] = ais
 ; Views
 ; Requierement for views_slideshow
 ; Required by views_slideshow and other modules
-projects[libraries] = 2.0-alpha2
-projects[views_slideshow] = 3.0
+projects[] = libraries
+projects[] = views_slideshow
 projects[] = views_bulk_operations
 ; former Views Attach
-; projects[eva] = 1.1
+; projects[] = eva
 ; Order views results using UI
 projects[] = draggableviews
 ; Implementation of Quicksand Jquery plugin http://razorjack.net/quicksand/
@@ -173,6 +190,8 @@ projects[] = draggableviews
 ; Change default taxonomy views
 ;projects[] = taxonomy_view_mode
 ;projects[] = tvi
+; Data visualization for views. Supports charts and "BigText" in views. 
+;projects[] = views_dataviz
 
 ; Performance Optimization
 ;see more on http://drupal.org/project/memcache
@@ -187,12 +206,8 @@ projects[] = speedy
 ;projects[] = xmlsitemap
 ;projects[] = site_verify
 ;;projects[] = seo
-; Using devel version from 2011/05/02, that fix some issues with i18n
-; Related issue http://drupal.org/node/1034126
-; Other related issue to the problem http://drupal.org/node/774950#comment-4776766
-; Some strongarm patch may fix issues on globalredirect http://drupal.org/node/998070#comment-4842624
-;projects[globalredirect] = 1.x-dev
-;projects[redirect] = 1.0-beta4
+;projects[] = globalredirect
+;projects[redirect] = 1.0-rc1
 ;projects[] = google_analytics
 projects[] = metatag
 
@@ -215,10 +230,10 @@ projects[] = metatag
 projects[] = transliteration
 projects[] = variable
 projects[] = i18n
-;projects[entity_translation] = 1.0-alpha1
+;projects[entity_translation] = 1.0-alpha2
 projects[i18nviews] = 3.x-dev
 ; Shows percentage of translated content per language
-;projects[translation_overview] = 2.0-beta1
+;projects[translation_overview] = 2.x-dev
 ; May assing language to existing nodes, still with MAJOR BUG
 ;projects[languageassign] = 1.2
 
@@ -229,11 +244,12 @@ projects[] = l10n_update
 ; install profile as a example.
 
 ; Development
-projects[devel] = 1.2
+projects[] = devel
 ;projects[] = devel_themer
+;projects[] = devel_catcher
 projects[] = coder
 ; Very useful for theme development, shows page with drupal elements
-projects[styleguide] = 1.0
+projects[] = styleguide
 ; Code Filter for text format, needs lib
 ;projects[] = geshifilter
 ; Similar to user switcher
@@ -243,6 +259,13 @@ projects[styleguide] = 1.0
 ; Examples for Developers, this project aims to provide high-quality, 
 ; well-documented API examples for a broad range of Drupal core functionality.
 ;projects[] = examples
+;http://www.lullabot.com/articles/module-monday-paranoia
+;project[] = paranoia
+
+;http://www.lullabot.com/articles/module-monday-hacked
+;http://drupalscout.com/knowledge-base/using-hacked-module-compare-drupal-site-code-standard-code
+;review code changes
+;project[] = hacked
 
 ; Use a external SMTP
 ;projects[smtp][version] = 1.0-beta1
