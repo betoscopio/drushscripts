@@ -4,7 +4,7 @@
 ;   - the 3rd party files from ckeditor.com
 ;   - some contributed modules
 ; To use type following command:
-;     $ drush make distro.make [directory]
+;     $ drush make drupal-simple-7.make [directory]
 
 ; Core version
 ; ------------
@@ -21,7 +21,7 @@ api = 2
 ; Core project
 ; ------------
 ; If is not set choose the latest stable version of the specified core
-projects[drupal][version] = 7.15
+projects[drupal][version] = 7.19
 
 ; Base
 ; --------
@@ -45,7 +45,6 @@ projects[] = module_filter
 projects[] = workbench
 ;projects[] = workbench_files
 ;projects[] = workbech_media
-
 ;projects[] = workbench_access
 ;projects[] = workbench_moderation
 
@@ -61,18 +60,21 @@ projects[] = entityreference
 
 ; GUI
 projects[menu_block] =  2.3
-projects[] =  menu_position
+projects[] = menu_position
+; A more configurable option to menu_position
+;projects[] = path_breadcrumbs
 
 projects[wysiwyg][version] = 2.2
 
 projects[] = image_resize_filter
 
 ; Use version 1 for production sites for now, version 2 still unstable (upgrade path working)
-projects[media][subdir] = contrib
-projects[media][version] = 1.2
+;projects[media][version] = 1.2
+projects[media][version] = 2.0-unstable7
 ; Resizing images in WYSIWYG broken in media-7.x-1.0-rc3 & 2.0-unstable3
 ; Issue http://drupal.org/node/1411340#comment-6051746
 projects[media][patch][1411340] = http://drupal.org/files/media-Resizing_images_in_WYSIWYG-1411340-13.patch
+projects[] = file_entity
 
 projects[] = media_youtube
 projects[] = options_element
@@ -93,8 +95,12 @@ projects[] = views_slideshow
 projects[] = speedy
 
 ; SEO
-;projects[] = google_analytics
+;projects[] = sitemap
+projects[] = xmlsitemap
+projects[] = globalredirect
+projects[] = google_analytics
 projects[] = metatag
+projects[] = redirect
 
 ;Social Media
 ;projects[] = socialmedia
@@ -111,7 +117,6 @@ projects[] = l10n_update
 ; install profile as a example.
 
 ; Development
-;projects[] = ftools
 ; To see the difference in overriden features
 projects[] = diff
 projects[] = devel
@@ -126,6 +131,11 @@ projects[] = styleguide
 ; Download release in development
 projects[] = smtp
 
+; Performance
+; There is no reason for not enable APC on a site
+projects[] = apc
+;projects[] = memcache
+;projects[] = varnish
 
 ;Themes
 projects[] = omega_tools
@@ -136,7 +146,7 @@ projects[omega][type] = theme
 
 ; CKEditor
 libraries[ckeditor][download][type] = "get"
-libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.4/ckeditor_3.6.4.zip"
+libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6/ckeditor_3.6.6.zip"
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
