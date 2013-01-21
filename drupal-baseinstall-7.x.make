@@ -3,7 +3,7 @@
 ;   - the 3rd party files from ckeditor.com
 ;   - some contributed modules
 ; To use type following command:
-;     $ drush make distro.make [directory]
+;     $ drush make drupal-baseinstall-7.make [directory]
 
 ; Some modules (flag, draggableviews) are downloaded using git for avoid this issue http://drupal.org/node/954476
 ; For more info about parameters see http://drupalcode.org/project/drush_make.git/blob_plain/refs/heads/6.x-2.x:/README.txt
@@ -24,7 +24,7 @@ api = 2
 ; Core project
 ; ------------
 ; If is not set choose the latest stable version of the specified core
-projects[drupal][version] = 7.15
+projects[drupal][version] = 7.19
 
 ; Base
 ; --------
@@ -84,6 +84,7 @@ projects[] = workbench
 projects[] =  flag
 
 ; Node work
+;projects[] = addanother
 ;projects[] = references
 ;projects[] = nodereference_url
 ; Should be used in favor than references
@@ -118,15 +119,19 @@ projects[] = options_element
 ; GUI
 projects[menu_block] =  2.3
 projects[] =  menu_position
+; A more configurable option to menu_position
+;projects[] = path_breadcrumbs
 projects[wysiwyg] = 2.2
 projects[] = image_resize_filter
 
 ; Use version 1 for production sites for now, version 2 still unstable (upgrade path working)
 projects[media][subdir] = contrib
-projects[media][version] = 1.2
+;projects[media][version] = 1.2
+projects[media][version] = 2.0-unstable7
 ; Resizing images in WYSIWYG broken in media-7.x-1.0-rc3 & 2.0-unstable3
 ; Issue http://drupal.org/node/1411340#comment-6051746
 projects[media][patch][1411340] = http://drupal.org/files/media-Resizing_images_in_WYSIWYG-1411340-13.patch
+projects[] = file_entity
 
 projects[media_youtube] = 1.0-beta3
 ; Add crop, rotate and scale tools to media images, 
@@ -145,14 +150,20 @@ projects[] = extlink
 ; Layouts
 ;projects[] = panels
 ;projects[] = ds
+projects[] = panelizer
+projects[] = fieldable_panels_panes
+projects[] = panels_breadcrumbs
+; Several layouts for use with panels from the Panopoly project.
+projects[panopoly_theme][version] = 1.0-beta6
 
 ;Adaptive Image Styles (ais), responsive images.
 project[] = ais
 project[] = cs_adaptive_image
 
 ;Responsive videos using http://odyniec.net/projects/imgareaselect/
+; Only necesary when using dferent ratio aspect videos
 project[] = fitvids
-
+; There are other simpler options in some cases http://groups.drupal.org/node/233238
 
 ; Eye Candy
 ;projects[] = slidebox
@@ -193,13 +204,6 @@ projects[] = draggableviews
 ; Data visualization for views. Supports charts and "BigText" in views. 
 ;projects[] = views_dataviz
 
-; Performance Optimization
-;see more on http://drupal.org/project/memcache
-;projects[] = memcache
-;projects[] = varnish
-; Minify core JS
-projects[] = speedy
-
 ; SEO
 ;projects[] = seo_checklist
 ;projects[] = sitemap
@@ -207,9 +211,9 @@ projects[] = speedy
 ;projects[] = site_verify
 ;;projects[] = seo
 ;projects[] = globalredirect
-;projects[redirect] = 1.0-rc1
 ;projects[] = google_analytics
 projects[] = metatag
+projects[] = redirect
 
 ;Social Media
 ;projects[] = socialmedia
@@ -268,10 +272,21 @@ projects[] = styleguide
 ;project[] = hacked
 
 ; Use a external SMTP
-;projects[smtp][version] = 1.0-beta1
+;projects[] = smtp
+
+; Performance & Optimization
+; (backend)
+; There is no reason for not enable APC on a site
+projects[] = apc
+;projects[] = memcache
+;projects[] = varnish
+; (frontend)
+; Minify core JS
+projects[] = speedy
 
 ;Themes
-projects[omega_tools] = 3.0-rc4
+;project[] = chrome_frame
+projects[] = omega_tools
 projects[omega][type] = theme
 
 ; Libraries Modules
@@ -283,7 +298,7 @@ projects[omega][type] = theme
 
 ; CKEditor
 libraries[ckeditor][download][type] = "get"
-libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.2/ckeditor_3.6.2.tar.gz"
+libraries[ckeditor][download][url] = "http://download.cksource.com/CKEditor/CKEditor/CKEditor%203.6.6/ckeditor_3.6.6.zip"
 libraries[ckeditor][directory_name] = "ckeditor"
 libraries[ckeditor][destination] = "libraries"
 
